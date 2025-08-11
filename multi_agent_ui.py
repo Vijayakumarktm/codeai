@@ -113,11 +113,11 @@ def interactive_session():
 
 # ====== Main Execution ======
 if __name__ == "__main__":
-    # project_idea = input("💡 Enter your project idea (e.g., CRM for freelancers): ").strip()
-    # if not project_idea:
-    #     print("⚠️ Project idea is required. Exiting.")
-    #     exit(1)
+    project_idea = input("💡 Enter your project idea (e.g., CRM for freelancers): ").strip()
+    if not project_idea:
+        print("⚠️ Project idea is required. Exiting.")
+        exit(1)
 
-    # screens_data = build_project(project_idea)
-    # if screens_data:
+    screens_data = build_project(project_idea)
+    if screens_data:
         interactive_session()
