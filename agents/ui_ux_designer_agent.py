@@ -27,6 +27,7 @@ def ui_ux_designer_agent(features_json):
         "screens": [
             {{
                 "name": "Screen Name",
+                "file_name": "screen_name.jsx",
                 "description": "Short description of what this screen is for.",
                 "elements": ["UI Element 1", "UI Element 2", "UI Element 3"],
                 "design_details": "Color scheme, layout style, etc.",
