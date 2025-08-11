@@ -85,8 +85,14 @@ def setup_react_app():
 
     print("✅ React app initialized with Tailwind and React Router.\n")
 
-    # print("🚀 Starting the development server...\n")
-    # subprocess.run(["npm", "run", "dev"])
+    print("🚀 Starting the development server...\n")
+    subprocess.run(["osascript", "-e", 
+        f'''
+        tell application "Terminal"
+            do script "cd '{os.getcwd()}' && npm run dev"
+        end tell
+        '''
+    ])
 
 
 def update_app_jsx(screens):
@@ -103,22 +109,22 @@ def update_app_jsx(screens):
     ])
 
     app_code = f"""\
-import React from "react";
-import {{ BrowserRouter as Router, Routes, Route }} from "react-router-dom";
-{imports}
+        import React from "react";
+        import {{ BrowserRouter as Router, Routes, Route }} from "react-router-dom";
+        {imports}
 
-function App() {{
-  return (
-    <Router>
-      <Routes>
-        {routes_code}
-      </Routes>
-    </Router>
-  );
-}}
+        function App() {{
+        return (
+            <Router>
+            <Routes>
+                {routes_code}
+            </Routes>
+            </Router>
+        );
+        }}
 
-export default App;
-"""
+        export default App;
+        """
 
     with open("src/App.jsx", "w") as f:
         f.write(app_code)
