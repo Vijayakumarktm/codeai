@@ -19,6 +19,10 @@ def ui_agent(screen):
     - Keep code **clean, modular, and well-documented**.
     - Should not use other packages for Tailwindcss. Only use Tailwind CSS classes.
     - Use only fontawesome icons in the screens
+       Example: import {{ FontAwesomeIcon }} from '@fortawesome/react-fontawesome';
+                import {{ faUser, faLock }} from '@fortawesome/free-solid-svg-icons';
+                <FontAwesomeIcon icon={{faUser}} />
+                <FontAwesomeIcon icon={{faLock}} />
 
     ---
     ### Output:

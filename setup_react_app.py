@@ -22,6 +22,14 @@ def setup_react_app():
     print("🧭 Installing React Router DOM...")
     subprocess.run(["npm", "install", "react-router-dom"], check=True)
 
+    print("🎨 Installing Font Awesome React packages...")
+    subprocess.run([
+        "npm", "install",
+        "@fortawesome/react-fontawesome",
+        "@fortawesome/free-solid-svg-icons",
+        "@fortawesome/fontawesome-svg-core"
+    ], check=True)
+
     with open("vite.config.js", "w") as f:
         f.write("""\
             import { defineConfig } from 'vite'
@@ -93,40 +101,3 @@ def setup_react_app():
         end tell
         '''
     ])
-
-
-def update_app_jsx(screens):
-    """
-    Updates App.jsx to include imports and routes for each screen.
-    Example: if screens = ['Login', 'Signup'], creates routes for /login and /signup.
-    """
-    routes_code = "\n        ".join([
-        f'<Route path="/{screen.lower()}" element={{ <{screen} /> }} />' for screen in screens
-    ])
-
-    imports = "\n".join([
-        f'import {screen} from "./components/{screen}.jsx";' for screen in screens
-    ])
-
-    app_code = f"""\
-        import React from "react";
-        import {{ BrowserRouter as Router, Routes, Route }} from "react-router-dom";
-        {imports}
-
-        function App() {{
-        return (
-            <Router>
-            <Routes>
-                {routes_code}
-            </Routes>
-            </Router>
-        );
-        }}
-
-        export default App;
-        """
-
-    with open("src/App.jsx", "w") as f:
-        f.write(app_code)
-
-    print("✅ App.jsx updated with routes for screens:", ", ".join(screens))

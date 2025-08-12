@@ -46,7 +46,11 @@ def ui_change_agent(change_desc, react_app_path):
            "updated_code": "FULL updated code for that file"
          }}
        ]
-
+    4. If adding icons, use the fontawesome icons.
+       Example: import {{ FontAwesomeIcon }} from '@fortawesome/react-fontawesome';
+                import {{ faUser, faLock }} from '@fortawesome/free-solid-svg-icons';
+                <FontAwesomeIcon icon={{faUser}} />
+                <FontAwesomeIcon icon={{faLock}} />
     ---
     ### Output:
     - Return only the **full React component code** for this screen.

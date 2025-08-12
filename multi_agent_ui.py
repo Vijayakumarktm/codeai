@@ -98,7 +98,7 @@ def interactive_session():
             desc = input("\n📝 Describe what you want to do: ").strip()
             print(f"\n🔍 Classifying action for: {desc}")
             action_type = action_classifier_agent(desc)  # Decide action
-
+            print(f"📂 Action classified as: {action_type}")
             if action_type == "ui_change":
                 print(ui_change_agent(desc, react_app_path))
             elif action_type == "new_feature":
@@ -113,11 +113,22 @@ def interactive_session():
 
 # ====== Main Execution ======
 if __name__ == "__main__":
-    project_idea = input("💡 Enter your project idea (e.g., CRM for freelancers): ").strip()
-    if not project_idea:
-        print("⚠️ Project idea is required. Exiting.")
-        exit(1)
+    choice = input("\n📌 Do you want to start a (n)ew project or work on an (e)xisting one? [n/e]: ").strip().lower()
 
-    screens_data = build_project(project_idea)
-    if screens_data:
+    if choice == "n":
+        project_idea = input("💡 Enter your project idea (e.g., CRM for freelancers): ").strip()
+        if not project_idea:
+            print("⚠️ Project idea is required. Exiting.")
+            exit(1)
+
+        screens_data = build_project(project_idea)
+        if screens_data:
+            interactive_session()
+
+    elif choice == "e":
+        print("\n📂 Continuing with existing project...")
         interactive_session()
+
+    else:
+        print("⚠️ Invalid choice. Please run again.")
+
